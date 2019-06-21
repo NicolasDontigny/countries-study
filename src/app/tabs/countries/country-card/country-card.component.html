@@ -1,0 +1,59 @@
+<div class="country-card">
+  <div>
+    <img src="{{ country.flag }}" alt="{{ country.name }}-flag">
+    <div class="country-info">
+      <h3>
+        {{ country.name }}
+      </h3>
+      <div class="">
+        <div class="form-group">
+          <input 
+          type="text"
+          [(ngModel)]="capitalGuess"
+          placeholder="enter capital"
+          class="form-control"
+          [ngClass]="{'wrong': !answerCorrect, 'correct': answerCorrect, 'tried': clickedCheck}">
+        </div>
+        <div class="mt-2 d-flex align-items-center">
+          <button
+            class="btn btn-primary"
+            (click)="checkAnswer()">
+            Check Answer
+          </button>
+          <div 
+            class="green ml-3"
+            *ngIf="answerCorrect && clickedCheck">Correct!</div>
+          <div 
+            class="red ml-3"
+            *ngIf="!answerCorrect && clickedCheck">Try again!</div>
+        </div>
+        <div class="mt-2">
+          <button
+            class="btn btn-show-capital mt-3"
+            *ngIf="!showCapital"
+            (click)="showCapitalOn()">
+              Show Capital
+          </button>
+          <button
+            class="btn btn-show-capital mt-3"
+            *ngIf="showCapital"
+            (click)="hideCapital()">
+            {{ country.capital }}
+          </button>
+        </div>
+        <div class="mt-2">
+          <button
+            class="btn btn-add-practice"
+            (click)="addToPractice()">
+            Add to Practice List
+          </button>
+        </div>
+        <!-- <h5
+          *ngIf="showCapital"
+          class="ml-3">
+          {{ country.capital }}
+        </h5> -->
+      </div>
+    </div>
+  </div>
+</div>
